@@ -42,3 +42,7 @@ solar-age-calculator/
 ├── index.html
 ├── README.md
 └── LICENSE
+## 👨‍💻 Developer
+
+**Developed by:**  
+[Jahangir Hussain](https://wa.me/917002443108)
