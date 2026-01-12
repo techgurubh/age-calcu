@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solar Age Calculator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Poppins, sans-serif;
+}
+
+/* 🌌 Space Background */
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at center,#0b1d3a,#020617 70%);
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+}
+
+/* ✨ Stars (Pure CSS) */
+.stars::after{
+  content:"";
+  position:fixed;
+  width:2px;
+  height:2px;
+  background:white;
+  box-shadow:
+    50px 100px white, 200px 300px white, 400px 150px white,
+    600px 500px white, 800px 200px white, 1000px 400px white,
+    1200px 100px white, 1400px 600px white,
+    300px 700px white, 500px 900px white, 700px 800px white,
+    900px 1000px white, 1100px 900px white;
+  animation:twinkle 5s infinite alternate;
+  opacity:0.8;
+}
+@keyframes twinkle{
+  from{opacity:0.3}
+  to{opacity:1}
+}
+
+/* ☀️ Solar System */
+.solar{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:0;
+}
+
+/* Sun */
+.sun{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:radial-gradient(circle,#ffd966,#ff9800);
+  box-shadow:0 0 80px #ff9800;
+  position:absolute;
+}
+
+/* Orbits */
+.orbit{
+  position:absolute;
+  border:1px solid rgba(255,255,255,0.25);
+  border-radius:50%;
+  animation:spin linear infinite;
+}
+.orbit .planet{
+  position:absolute;
+  top:50%;
+  left:100%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+}
+
+/* Sizes & Speeds */
+.mercury{width:200px;height:200px;animation-duration:8s}
+.venus{width:260px;height:260px;animation-duration:12s}
+.earth{width:320px;height:320px;animation-duration:16s}
+.mars{width:380px;height:380px;animation-duration:20s}
+.jupiter{width:460px;height:460px;animation-duration:30s}
+.saturn{width:540px;height:540px;animation-duration:40s}
+.uranus{width:620px;height:620px;animation-duration:50s}
+.neptune{width:700px;height:700px;animation-duration:60s}
+
+/* Planets */
+.mercury .planet{width:6px;height:6px;background:#aaa}
+.venus .planet{width:10px;height:10px;background:#f5c16c}
+.earth .planet{width:12px;height:12px;background:#4fc3f7}
+.mars .planet{width:9px;height:9px;background:#ff7043}
+.jupiter .planet{width:20px;height:20px;background:#d7a86e}
+.saturn .planet{
+  width:18px;height:18px;background:#e0c38a;
+}
+.saturn .planet::after{
+  content:"";
+  position:absolute;
+  width:32px;height:12px;
+  border:2px solid rgba(255,255,255,0.5);
+  border-radius:50%;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+}
+.uranus .planet{width:14px;height:14px;background:#80deea}
+.neptune .planet{width:14px;height:14px;background:#5c6bc0}
+
+@keyframes spin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+
+/* 🌠 Shooting Star */
+.star{
+  position:absolute;
+  width:120px;
+  height:2px;
+  background:linear-gradient(90deg,white,transparent);
+  animation:shoot 1s ease-out forwards;
+  z-index:2;
+}
+@keyframes shoot{
+  to{transform:translate(600px,-300px);opacity:0}
+}
+
+/* 🧊 Glass UI */
+.app{
+  position:relative;
+  z-index:5;
+  width:100%;
+  max-width:420px;
+  padding:25px;
+  border-radius:25px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.25);
+  box-shadow:0 25px 50px rgba(0,0,0,0.5);
+}
+
+h1{text-align:center;margin-bottom:20px}
+
+label{font-size:13px}
+
+input,select{
+  width:100%;
+  padding:10px;
+  margin-top:6px;
+  border-radius:10px;
+  border:none;
+  background:rgba(255,255,255,0.2);
+  color:#fff;
+}
+select option{color:#000}
+
+.row{display:flex;gap:10px;margin-bottom:12px}
+
+button{
+  width:100%;
+  padding:12px;
+  border-radius:14px;
+  border:none;
+  background:linear-gradient(135deg,#00f2fe,#4facfe);
+  font-weight:600;
+  cursor:pointer;
+}
+
+.card{
+  margin-top:12px;
+  padding:12px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.18);
+}
+
+footer{
+  text-align:center;
+  margin-top:18px;
+  font-size:13px;
+}
+footer a{
+  color:#00f2fe;
+  font-weight:600;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+<div class="stars"></div>
+
+<div class="solar">
+  <div class="sun"></div>
+  <div class="orbit mercury"><div class="planet"></div></div>
+  <div class="orbit venus"><div class="planet"></div></div>
+  <div class="orbit earth"><div class="planet"></div></div>
+  <div class="orbit mars"><div class="planet"></div></div>
+  <div class="orbit jupiter"><div class="planet"></div></div>
+  <div class="orbit saturn"><div class="planet"></div></div>
+  <div class="orbit uranus"><div class="planet"></div></div>
+  <div class="orbit neptune"><div class="planet"></div></div>
+</div>
+
+<div class="app">
+<h1>Age Calculator</h1>
+
+<label>Current Date</label>
+<input type="date" id="currentDate">
+
+<label>Date of Birth</label>
+<div class="row">
+  <select id="day"></select>
+  <select id="month"></select>
+  <input type="number" id="year" placeholder="Year">
+</div>
+
+<button onclick="calc()">Calculate</button>
+<div id="result"></div>
+
+<footer>
+Develop by 
+<a href="https://wa.me/917002443108" target="_blank">
+Jahangir Hussain
+</a>
+</footer>
+</div>
+
+<script>
+let timer = null;
+
+// Populate date fields
+for(let i=1;i<=31;i++) day.innerHTML+=`<option>${i}</option>`;
+["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+.forEach((m,i)=>month.innerHTML+=`<option value="${i}">${m}</option>`);
+currentDate.valueAsDate = new Date();
+
+function calc(){
+  const d = +day.value,
+        m = +month.value,
+        y = +year.value;
+
+  if(!y){
+    result.innerHTML = "⚠️ Enter birth year";
+    return;
+  }
+
+  const baseDate = new Date(currentDate.value);
+  const dob = new Date(y, m, d);
+
+  // Stop old timer if any
+  if(timer) clearInterval(timer);
+
+  // Start live ticking
+  timer = setInterval(() => updateAge(dob, baseDate), 1000);
+  updateAge(dob, baseDate);
+}
+
+function updateAge(dob, baseDate){
+  const now = new Date(baseDate.getTime() + (Date.now() - baseDate.getTime()));
+
+  let diffMs = now - dob;
+
+  const seconds = Math.floor(diffMs / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  let Y = now.getFullYear() - dob.getFullYear();
+  let M = now.getMonth() - dob.getMonth();
+  let D = now.getDate() - dob.getDate();
+
+  if(D < 0){
+    M--;
+    D += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+  }
+  if(M < 0){
+    Y--;
+    M += 12;
+  }
+
+  let nextBD = new Date(now.getFullYear(), dob.getMonth(), dob.getDate());
+  if(nextBD < now) nextBD.setFullYear(now.getFullYear() + 1);
+  const left = Math.ceil((nextBD - now) / 86400000);
+
+  result.innerHTML = `
+    <div class="card">🎂 ${Y} Years, ${M} Months, ${D} Days</div>
+    <div class="card">
+      ⏱️ Live Age<br>
+      ${days} Days<br>
+      ${hours} Hours<br>
+      ${minutes} Minutes<br>
+      ${seconds} Seconds
+    </div>
+    <div class="card">🎉 Next Birthday in ${left} Days</div>
+  `;
+}
+
+// 🌠 Shooting star on click
+document.addEventListener("click", e => {
+  const s = document.createElement("div");
+  s.className = "star";
+  s.style.left = e.clientX + "px";
+  s.style.top = e.clientY + "px";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 1000);
+});
+</script>
+</body>
+</html>
