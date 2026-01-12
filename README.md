@@ -1,48 +1,29 @@
 # 🌌 Solar Age Calculator
 
-A modern **Glassmorphism Age Calculator** with a beautiful **Solar System animated background**, built using pure **HTML, CSS, and JavaScript**.
-
-This project works fully **offline**, has **live ticking age**, and includes interactive space effects like orbiting planets and shooting stars.
-
----
+A modern **Glassmorphism Age Calculator** with a **Solar System animated background** built using pure **HTML, CSS, and JavaScript**.
 
 ## ✨ Features
-
-- 🪐 Solar system orbit animation background
+- 🪐 Animated solar system orbit background
 - 🧊 Glassmorphism modern UI
 - ⏱️ Live ticking age (updates every second)
-- 🎂 Age in years, months, and days
-- ⏳ Total age in days, hours, minutes, and seconds
+- 🎂 Age in years, months, days
+- ⏳ Total age in days, hours, minutes, seconds
 - 🎉 Next birthday countdown
 - 🌠 Shooting star animation on click
 - 📱 Mobile & desktop responsive
-- 🌐 No external libraries or images (offline-friendly)
-
----
+- 🌐 Works offline (no external images or libraries)
 
 ## 🚀 Live Demo
-
-Open `index.html` in any modern browser  
-(or enable GitHub Pages from repository settings)
-
----
+Just open `index.html` in any modern browser.
 
 ## 🛠️ Tech Stack
+- HTML5
+- CSS3 (Animations, Glassmorphism)
+- Vanilla JavaScript
 
-- HTML5  
-- CSS3 (Animations, Glassmorphism)  
-- Vanilla JavaScript  
-
----
-
-## 📂 Project Structure
-
-```text
-solar-age-calculator/
-├── index.html
-├── README.md
-└── LICENSE
 ## 👨‍💻 Developer
-
 **Developed by:**  
 [Jahangir Hussain](https://wa.me/917002443108)
+
+## 📜 License
+This project is open-source and free to use for learning and personal projects.
